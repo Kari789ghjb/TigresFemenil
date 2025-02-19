@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Nanum+Gothic&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Cinzel:wght@400..900&family=Nanum+Gothic&display=swap" rel="stylesheet">
+
+
+    <title>Formulario de Jugadora</title>
+    <link rel="icon" href="https://seeklogo.com/images/T/tigres-uanl-logo-B7CA048635-seeklogo.com.png" type="image/x-icon">
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url(https://www.sopitas.com/wp-content/uploads/2023/11/tigres-femenil-titulos-liga-mx.png);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+         .container {
+            width: 100%;  /* Ancho por defecto más grande */
+            max-width: 400px; /* Limita el tamaño máximo */
+            margin: 50px auto;
+            background-color: rgb(255, 255, 255); 
+            padding: 20px;
+            color: rgba(0, 0, 0, 0.766);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: absolute;
+            left: 60%;
+             top: 10%;
+        }
+        h1,h2 {
+            text-align: center;
+            color: rgba(0, 0, 0, 0.766);
+        }
+        label {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            display: block;
+            color: rgba(0, 0, 0, 0.766);
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        textarea {
+            resize: vertical;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        button {
+            background-color: #1c4481;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1.1em;
+        }
+        button:hover {
+            background-color: #2b65bd;
+        }
+
+        /* Estilo responsivo */
+        @media (max-width: 600px) {
+            .container {
+                width: 100%;
+                margin: 20px;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    {% if msg %}
+        <p class="msg">{{ msg }}</p>
+     {% endif %}
+
+
+    <div style="position: absolute; left: 5%;top: 0%;">
+        <h1 style="color: rgba(255, 255, 255, 0.886);  font-family: Anton, serif; font-size: 70px;"> TIGRES FEMENIL </h1>
+    </div>
+    <div class="container">
+        <h1 style="font-size: 20px;  font-family: Cinzel, serif;">FORMULARIO DE JUGADORA</h1>
+        <form action="{{ url_for('registrarForm') }}"  method="POST" >
+            <div class="form-group">
+                <label for="nombre">Nombre de la Jugadora:</label>
+                <input type="text" id="nombre" name="nombre" required placeholder="Ingrese el nombre de la jugadora">
+            </div>
+            <div class="form-group">
+                <label for="posicion">Posición:</label>
+                <input type="text" id="posicion" name="posicion" required placeholder="Ingrese la posición de la jugadora">
+            </div>
+            <div class="form-group">
+                <label for="nacimiento">Fecha de Nacimiento:</label>
+                <input type="date" id="nacimiento" name="nacimiento" required>
+            </div>
+            <div class="form-group">
+                <label for="biografia">Biografía:</label>
+                <textarea id="biografia" name="biografia" style="resize: none;" rows="4" required placeholder="Escribe una breve biografía de la jugadora"></textarea>
+            </div>
+            <button type="submit">Enviar</button>
+        </form>
+
+    </div>
+
+
+    <script>
+        setTimeout(function(){
+            elementoP = document.querySelector('.msg');
+            elementoP.style.display = 'none';
+        }, 2000);
+        </script>
+
+</body>
+</html>
+
+
+
